@@ -1,0 +1,12 @@
+[
+  { "id": "ferrite", "name": "Ferrite", "kind": "strategic", "weight": 10, "colour": "#9aa5b1", "description": "Dense structural metal used in every hull." },
+  { "id": "luminite", "name": "Luminite", "kind": "strategic", "weight": 7, "colour": "#7cd4ff", "description": "Energy crystals that power lasers and shields." },
+  { "id": "voidglass", "name": "Voidglass", "kind": "strategic", "weight": 5, "colour": "#b58cff", "description": "A transparent alloy that only forms in vacuum." },
+  { "id": "nullite", "name": "Nullite", "kind": "strategic", "weight": 3, "colour": "#ff7cab", "description": "Exotic matter with negative mass. Priceless and dangerous." },
+  { "id": "dreampearls", "name": "Dreampearls", "kind": "luxury", "weight": 6, "colour": "#ffd6f0", "description": "Pearls that induce vivid, pleasant dreams." },
+  { "id": "silkspore", "name": "Silkspore", "kind": "luxury", "weight": 6, "colour": "#e6f0b0", "description": "Fungal threads finer than any loom can weave." },
+  { "id": "sunwine", "name": "Sunwine", "kind": "luxury", "weight": 6, "colour": "#ffb347", "description": "A liquor fermented in starlight. Allegedly." },
+  { "id": "aetherblooms", "name": "Aetherblooms", "kind": "luxury", "weight": 5, "colour": "#9dffd6", "description": "Flowers that grow only in low gravity." },
+  { "id": "chrome_orchids", "name": "Chrome Orchids", "kind": "luxury", "weight": 4, "colour": "#d6e4ff", "description": "Metallic flora prized by every court in the galaxy." },
+  { "id": "singing_coral", "name": "Singing Coral", "kind": "luxury", "weight": 4, "colour": "#ff9a8a", "description": "Reef structures that resonate in harmony. Unbearably fashionable." }
+]

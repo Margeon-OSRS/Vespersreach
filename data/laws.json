@@ -1,0 +1,12 @@
+[
+  { "id": "public_works", "name": "Public Works Act", "ideology": "industrialist", "cost": 40, "upkeep": 2, "requires": "civic_engineering", "effects": [ { "resource": "industry", "percent": 10 } ], "description": "State funding for factories and shipyards. +10% industry." },
+  { "id": "standing_shipyards", "name": "Standing Shipyards", "ideology": "industrialist", "cost": 50, "upkeep": 3, "effects": [ { "shipCost": 10 } ], "description": "Yards kept warm at public expense. Ships cost 10% less." },
+  { "id": "free_markets", "name": "Free Markets", "ideology": "mercantile", "cost": 40, "upkeep": 2, "requires": "stellar_finance", "effects": [ { "resource": "dust", "percent": 10 } ], "description": "Deregulated trade across all systems. +10% Dust." },
+  { "id": "merchant_charter", "name": "Merchant Charter", "ideology": "mercantile", "cost": 40, "upkeep": 2, "effects": [ { "resource": "dust", "flat": 2 } ], "description": "Licensed guilds in every system. +2 Dust per system." },
+  { "id": "open_universities", "name": "Open Universities", "ideology": "scientific", "cost": 40, "upkeep": 2, "requires": "xenobiology", "effects": [ { "resource": "science", "percent": 10 } ], "description": "Free education and open research. +10% science." },
+  { "id": "research_grants", "name": "Research Grants", "ideology": "scientific", "cost": 40, "upkeep": 2, "effects": [ { "resource": "science", "flat": 2 } ], "description": "Stipends for every laboratory. +2 science per system." },
+  { "id": "festival_charter", "name": "Festival Charter", "ideology": "pacifist", "cost": 30, "upkeep": 1, "effects": [ { "approval": 5 } ], "description": "Public holidays and subsidised festivals. +5 approval." },
+  { "id": "open_borders", "name": "Open Borders", "ideology": "pacifist", "cost": 40, "upkeep": 2, "effects": [ { "resource": "influence", "flat": 1 }, { "growth": 10 } ], "description": "Free movement between worlds. +1 influence per system, +10% growth." },
+  { "id": "conscription", "name": "Conscription", "ideology": "militarist", "cost": 40, "upkeep": 2, "effects": [ { "shipCost": 10 }, { "approval": -5 } ], "description": "Every citizen serves. Ships cost 10% less; -5 approval." },
+  { "id": "war_economy", "name": "War Economy", "ideology": "militarist", "cost": 50, "upkeep": 3, "effects": [ { "resource": "industry", "percent": 10 }, { "resource": "food", "percent": -10 } ], "description": "Everything for the fleet. +10% industry, -10% food." }
+]

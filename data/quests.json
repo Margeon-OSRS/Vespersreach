@@ -1,0 +1,26 @@
+[
+  { "factionId": "vael", "title": "The Long Hunger", "steps": [
+    { "id": "vael_1", "title": "Taste the Stars", "text": "The Ascendancy must know what lies beyond the home crust. Chart five systems.", "objective": { "kind": "explore", "target": 5 }, "reward": { "dust": 60, "text": "+60 Dust" } },
+    { "id": "vael_2", "title": "A Second Feast", "text": "One world is never enough. Hold three systems.", "objective": { "kind": "systems", "target": 3 }, "reward": { "influence": 40, "text": "+40 influence" } },
+    { "id": "vael_3", "title": "Deep Rendering", "text": "Reach the mantle and the hunger will be satisfied for a season. Research Deep Extraction.", "objective": { "kind": "tech", "target": "deep_extraction" }, "reward": { "science": 150, "text": "+150 science" } } ] },
+  { "factionId": "keth", "title": "The Road Without End", "steps": [
+    { "id": "keth_1", "title": "Read the Lanes", "text": "The Exodus trusts only what it has seen. Chart six systems.", "objective": { "kind": "explore", "target": 6 }, "reward": { "dust": 60, "text": "+60 Dust" } },
+    { "id": "keth_2", "title": "Build the Vault", "text": "Every world left behind must be remembered. Build a Memory Vault.", "objective": { "kind": "improvement", "target": "keth_memory_vault" }, "reward": { "influence": 50, "text": "+50 influence" } },
+    { "id": "keth_3", "title": "Harsh Country", "text": "Learn to settle the worlds nobody else wants. Research Harsh World Habitats.", "objective": { "kind": "tech", "target": "harsh_world_habitats" }, "reward": { "science": 120, "text": "+120 science" } } ] },
+  { "factionId": "solenne", "title": "The Tide Accord", "steps": [
+    { "id": "solenne_1", "title": "Open Hands", "text": "The Concord persuades by example. Bank 150 Dust.", "objective": { "kind": "dust", "target": 150 }, "reward": { "influence": 30, "text": "+30 influence" } },
+    { "id": "solenne_2", "title": "A Voice in the Senate", "text": "Policy is the Concord's weapon. Pass a law.", "objective": { "kind": "law", "target": 1 }, "reward": { "dust": 100, "text": "+100 Dust" } },
+    { "id": "solenne_3", "title": "The Envoy", "text": "Someone must carry the Accord abroad. Recruit a hero.", "objective": { "kind": "hero", "target": 1 }, "reward": { "science": 150, "text": "+150 science" } } ] },
+  { "factionId": "mercator", "title": "The Ledger", "steps": [
+    { "id": "mercator_1", "title": "Seed Capital", "text": "Nothing moves without money. Hold 400 Dust.", "objective": { "kind": "dust", "target": 400 }, "reward": { "influence": 30, "text": "+30 influence" } },
+    { "id": "mercator_2", "title": "The Bourse", "text": "A proper exchange, with a roof. Build the Syndicate Bourse.", "objective": { "kind": "improvement", "target": "mercator_bourse" }, "reward": { "dust": 150, "text": "+150 Dust" } },
+    { "id": "mercator_3", "title": "Lanes of Commerce", "text": "Trade needs routes. Research Trade Networks.", "objective": { "kind": "tech", "target": "trade_networks" }, "reward": { "science": 120, "text": "+120 science" } } ] },
+  { "factionId": "ferron", "title": "The Forge Tithe", "steps": [
+    { "id": "ferron_1", "title": "First Hulls", "text": "A foundry without ships is a shrine without worshippers. Field three warships.", "objective": { "kind": "warships", "target": 3 }, "reward": { "dust": 80, "text": "+80 Dust" } },
+    { "id": "ferron_2", "title": "The Great Foundry", "text": "Raise the cathedral of fire. Build the Great Foundry.", "objective": { "kind": "improvement", "target": "ferron_great_foundry" }, "reward": { "influence": 40, "text": "+40 influence" } },
+    { "id": "ferron_3", "title": "Proof of Steel", "text": "Steel must be tested. Win a battle.", "objective": { "kind": "battles", "target": 1 }, "reward": { "science": 150, "text": "+150 science" } } ] },
+  { "factionId": "oneiri", "title": "The Proof", "steps": [
+    { "id": "oneiri_1", "title": "Axioms", "text": "Every proof begins with definitions. Research three technologies.", "objective": { "kind": "techs", "target": 3 }, "reward": { "dust": 80, "text": "+80 Dust" } },
+    { "id": "oneiri_2", "title": "Lemma", "text": "The Chorus needs more voices. Reach twelve population.", "objective": { "kind": "pop", "target": 12 }, "reward": { "influence": 40, "text": "+40 influence" } },
+    { "id": "oneiri_3", "title": "Resonance", "text": "Amplify the Chorus. Build the Resonance Spire.", "objective": { "kind": "improvement", "target": "oneiri_resonance_spire" }, "reward": { "science": 200, "text": "+200 science" } } ] }
+]

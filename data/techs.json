@@ -1,0 +1,282 @@
+[
+  {
+    "id": "orbital_logistics",
+    "name": "Orbital Logistics",
+    "quadrant": "economy",
+    "era": 1,
+    "cost": 60,
+    "prerequisites": [],
+    "unlocks": {
+      "improvements": [
+        "orbital_dock"
+      ]
+    },
+    "description": "Standardised docking and cargo handling in orbit."
+  },
+  {
+    "id": "trade_networks",
+    "name": "Trade Networks",
+    "quadrant": "economy",
+    "era": 1,
+    "cost": 90,
+    "prerequisites": [
+      "orbital_logistics"
+    ],
+    "unlocks": {
+      "improvements": [
+        "trade_port"
+      ]
+    },
+    "description": "Bonded ports and commercial law that crosses star lanes."
+  },
+  {
+    "id": "deep_extraction",
+    "name": "Deep Extraction",
+    "quadrant": "economy",
+    "era": 2,
+    "cost": 180,
+    "prerequisites": [
+      "trade_networks"
+    ],
+    "unlocks": {
+      "improvements": [
+        "deep_mines"
+      ]
+    },
+    "description": "Mining shafts that reach a planet's mantle."
+  },
+  {
+    "id": "stellar_finance",
+    "name": "Stellar Finance",
+    "quadrant": "economy",
+    "era": 3,
+    "cost": 360,
+    "prerequisites": [
+      "deep_extraction"
+    ],
+    "unlocks": {
+      "laws": [
+        "free_markets"
+      ]
+    },
+    "description": "Credit instruments that span an empire."
+  },
+  {
+    "id": "applied_theory",
+    "name": "Applied Theory",
+    "quadrant": "science",
+    "era": 1,
+    "cost": 70,
+    "prerequisites": [],
+    "unlocks": {
+      "improvements": [
+        "research_campus"
+      ]
+    },
+    "description": "The institutions that turn curiosity into results."
+  },
+  {
+    "id": "long_range_survey",
+    "name": "Long-Range Survey",
+    "quadrant": "science",
+    "era": 1,
+    "cost": 80,
+    "prerequisites": [],
+    "unlocks": {
+      "modules": [
+        "probe_bay"
+      ]
+    },
+    "description": "Probes and telescopes that chart lanes before ships risk them."
+  },
+  {
+    "id": "coherent_optics",
+    "name": "Coherent Optics",
+    "quadrant": "science",
+    "era": 2,
+    "cost": 170,
+    "prerequisites": [
+      "applied_theory"
+    ],
+    "unlocks": {
+      "modules": [
+        "beam_laser"
+      ]
+    },
+    "description": "Lasers powerful enough to be weapons."
+  },
+  {
+    "id": "xenobiology",
+    "name": "Xenobiology",
+    "quadrant": "science",
+    "era": 3,
+    "cost": 340,
+    "prerequisites": [
+      "coherent_optics"
+    ],
+    "unlocks": {
+      "laws": [
+        "open_universities"
+      ]
+    },
+    "description": "Understanding life that did not evolve at home."
+  },
+  {
+    "id": "warship_frames",
+    "name": "Warship Frames",
+    "quadrant": "military",
+    "era": 1,
+    "cost": 70,
+    "prerequisites": [],
+    "unlocks": {
+      "hulls": [
+        "dagger",
+        "lance",
+        "mercator_caravel"
+      ]
+    },
+    "description": "Hull frames built to carry weapons rather than cargo."
+  },
+  {
+    "id": "guided_munitions",
+    "name": "Guided Munitions",
+    "quadrant": "military",
+    "era": 1,
+    "cost": 90,
+    "prerequisites": [
+      "warship_frames"
+    ],
+    "unlocks": {
+      "modules": [
+        "torpedo",
+        "flak_battery"
+      ]
+    },
+    "description": "Missiles that steer, and guns that shoot them down."
+  },
+  {
+    "id": "capital_hulls",
+    "name": "Capital Hulls",
+    "quadrant": "military",
+    "era": 2,
+    "cost": 200,
+    "prerequisites": [
+      "guided_munitions"
+    ],
+    "unlocks": {
+      "hulls": [
+        "warden",
+        "vael_maw"
+      ]
+    },
+    "description": "Cruiser-scale keels and the yards to lay them."
+  },
+  {
+    "id": "field_logistics",
+    "name": "Field Logistics",
+    "quadrant": "military",
+    "era": 2,
+    "cost": 160,
+    "prerequisites": [
+      "warship_frames"
+    ],
+    "unlocks": {
+      "modules": [
+        "repair_drones"
+      ]
+    },
+    "description": "Repair and resupply far from home."
+  },
+  {
+    "id": "dreadnought_hulls",
+    "name": "Dreadnought Hulls",
+    "quadrant": "military",
+    "era": 3,
+    "cost": 420,
+    "prerequisites": [
+      "capital_hulls"
+    ],
+    "unlocks": {
+      "hulls": [
+        "bulwark",
+        "hive",
+        "ferron_bastion",
+        "oneiri_choir"
+      ]
+    },
+    "description": "The largest things ever to move under their own power."
+  },
+  {
+    "id": "harsh_world_habitats",
+    "name": "Harsh World Habitats",
+    "quadrant": "empire",
+    "era": 1,
+    "cost": 80,
+    "prerequisites": [],
+    "unlocks": {
+      "planetTier": 1
+    },
+    "description": "Allows colonisation of tundra and desert worlds."
+  },
+  {
+    "id": "civic_engineering",
+    "name": "Civic Engineering",
+    "quadrant": "empire",
+    "era": 1,
+    "cost": 90,
+    "prerequisites": [],
+    "unlocks": {
+      "improvements": [
+        "pleasure_domes"
+      ],
+      "laws": [
+        "public_works"
+      ]
+    },
+    "description": "Cities designed on purpose."
+  },
+  {
+    "id": "extreme_climate_domes",
+    "name": "Extreme Climate Domes",
+    "quadrant": "empire",
+    "era": 2,
+    "cost": 190,
+    "prerequisites": [
+      "harsh_world_habitats"
+    ],
+    "unlocks": {
+      "planetTier": 2
+    },
+    "description": "Allows colonisation of arctic and lava worlds."
+  },
+  {
+    "id": "void_habitation",
+    "name": "Void Habitation",
+    "quadrant": "empire",
+    "era": 3,
+    "cost": 380,
+    "prerequisites": [
+      "extreme_climate_domes"
+    ],
+    "unlocks": {
+      "planetTier": 3
+    },
+    "description": "Allows colonisation of barren worlds, gas giants and asteroid belts."
+  },
+  {
+    "id": "grand_design",
+    "name": "Grand Design",
+    "quadrant": "empire",
+    "era": 3,
+    "cost": 520,
+    "prerequisites": [
+      "void_habitation"
+    ],
+    "unlocks": {
+      "improvements": [
+        "wonder_beacon"
+      ]
+    },
+    "description": "The engineering and the audacity to build something the whole galaxy can see."
+  }
+]

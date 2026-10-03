@@ -1,0 +1,11 @@
+[
+  { "id": "railgun", "name": "Railgun", "slot": "weapon", "kind": "kinetic", "cost": 20, "stats": { "damage": 12, "accuracy": 0.8, "phase": 3 }, "description": "Mass driver. Reliable, armour-piercing, short ranged." },
+  { "id": "beam_laser", "name": "Beam Laser", "slot": "weapon", "kind": "laser", "cost": 25, "stats": { "damage": 10, "accuracy": 0.9, "phase": 2 }, "requires": "coherent_optics", "description": "Burns through shields; weak against armour." },
+  { "id": "torpedo", "name": "Torpedo Rack", "slot": "weapon", "kind": "missile", "cost": 30, "stats": { "damage": 24, "accuracy": 0.6, "phase": 1 }, "requires": "guided_munitions", "description": "Slow, devastating, and easily shot down by flak." },
+  { "id": "deflector", "name": "Deflector Field", "slot": "defence", "kind": "shield", "cost": 20, "stats": { "shield": 30 }, "description": "Absorbs energy weapons before they touch the hull." },
+  { "id": "plating", "name": "Ferrite Plating", "slot": "defence", "kind": "armour", "cost": 15, "stats": { "armour": 40 }, "description": "Thick metal. Shrugs off kinetics." },
+  { "id": "flak_battery", "name": "Flak Battery", "slot": "defence", "kind": "flak", "cost": 18, "stats": { "flak": 0.5 }, "requires": "guided_munitions", "description": "Point defence that shreds incoming missiles." },
+  { "id": "ion_drive", "name": "Ion Drive", "slot": "support", "kind": "engine", "cost": 15, "stats": { "speed": 1 }, "description": "Adds one lane unit of movement per turn." },
+  { "id": "probe_bay", "name": "Probe Bay", "slot": "support", "kind": "probe", "cost": 12, "stats": { "vision": 1 }, "description": "Launches probes that reveal neighbouring systems." },
+  { "id": "repair_drones", "name": "Repair Drones", "slot": "support", "kind": "repair", "cost": 20, "stats": { "repair": 0.1 }, "requires": "field_logistics", "description": "Repairs 10% of fleet hull points each turn." }
+]

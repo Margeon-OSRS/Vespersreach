@@ -1,0 +1,10 @@
+[
+  { "id": "dust_boom", "name": "Dust Boom", "weight": 5, "minTurn": 10, "duration": 5, "effects": [ { "resource": "dust", "percent": 20 } ], "description": "Speculators flood the markets. +20% Dust for five turns." },
+  { "id": "solar_flares", "name": "Solar Flares", "weight": 5, "minTurn": 10, "duration": 4, "effects": [ { "resource": "science", "percent": -15 } ], "description": "Instruments across the empire are blinded by stellar activity. -15% science for four turns." },
+  { "id": "bumper_harvest", "name": "Bumper Harvest", "weight": 5, "minTurn": 5, "duration": 4, "effects": [ { "resource": "food", "percent": 20 } ], "description": "A perfect season on every farming world. +20% food for four turns." },
+  { "id": "labour_unrest", "name": "Labour Unrest", "weight": 4, "minTurn": 15, "duration": 4, "effects": [ { "approval": -10 } ], "description": "Strikes spread from system to system. -10 approval for four turns." },
+  { "id": "plague", "name": "Spore Plague", "weight": 3, "minTurn": 20, "duration": 5, "effects": [ { "resource": "food", "percent": -15 }, { "growth": -30 } ], "description": "A fungal blight crosses the lanes. -15% food and -30% growth for five turns." },
+  { "id": "trade_fair", "name": "Galactic Trade Fair", "weight": 4, "minTurn": 12, "duration": 4, "effects": [ { "resource": "dust", "percent": 10 }, { "resource": "influence", "flat": 2 } ], "description": "Merchants and envoys converge on your worlds. +10% Dust and +2 influence per system for four turns." },
+  { "id": "breakthrough", "name": "Breakthrough", "weight": 4, "minTurn": 8, "duration": 3, "effects": [ { "resource": "science", "percent": 25 } ], "description": "A junior researcher asks the right question. +25% science for three turns." },
+  { "id": "meteor_shower", "name": "Meteor Shower", "weight": 4, "minTurn": 6, "duration": 3, "effects": [ { "resource": "industry", "percent": -10 } ], "description": "Orbital works shut down while the sky falls. -10% industry for three turns." }
+]

@@ -1,0 +1,22 @@
+[
+  { "id": "g_farmer", "name": "Agronomist", "tree": "governor", "tier": 1, "description": "+10% food in the governed system.", "effects": [ { "resource": "food", "percent": 10 } ] },
+  { "id": "g_industrialist", "name": "Industrialist", "tree": "governor", "tier": 1, "description": "+10% industry.", "effects": [ { "resource": "industry", "percent": 10 } ] },
+  { "id": "g_treasurer", "name": "Treasurer", "tree": "governor", "tier": 1, "description": "+10% Dust.", "effects": [ { "resource": "dust", "percent": 10 } ] },
+  { "id": "g_scholar", "name": "Scholar", "tree": "governor", "tier": 1, "description": "+10% science.", "effects": [ { "resource": "science", "percent": 10 } ] },
+  { "id": "g_diplomat", "name": "Diplomat", "tree": "governor", "tier": 1, "description": "+2 influence per turn.", "effects": [ { "resource": "influence", "flat": 2 } ] },
+  { "id": "g_beloved", "name": "Beloved", "tree": "governor", "tier": 1, "description": "+10 approval.", "effects": [ { "approval": 10 } ] },
+  { "id": "g_builder", "name": "Shipwright", "tree": "governor", "tier": 1, "description": "Ships built here cost 10% less.", "effects": [ { "shipCost": 10 } ] },
+  { "id": "g_growth", "name": "Settler Patron", "tree": "governor", "tier": 2, "requires": "g_farmer", "description": "+25% population growth.", "effects": [ { "growth": 25 } ] },
+  { "id": "g_architect", "name": "Architect", "tree": "governor", "tier": 2, "requires": "g_industrialist", "description": "+20% industry and +2 flat.", "effects": [ { "resource": "industry", "percent": 20, "flat": 2 } ] },
+  { "id": "g_magnate", "name": "Magnate", "tree": "governor", "tier": 2, "requires": "g_treasurer", "description": "+20% Dust and +3 flat.", "effects": [ { "resource": "dust", "percent": 20, "flat": 3 } ] },
+  { "id": "g_dean", "name": "Dean", "tree": "governor", "tier": 2, "requires": "g_scholar", "description": "+20% science and +3 flat.", "effects": [ { "resource": "science", "percent": 20, "flat": 3 } ] },
+  { "id": "a_gunner", "name": "Gunnery Master", "tree": "admiral", "tier": 1, "description": "+10% damage.", "combat": { "damage": 10 } },
+  { "id": "a_marksman", "name": "Marksman", "tree": "admiral", "tier": 1, "description": "+10% accuracy.", "combat": { "accuracy": 10 } },
+  { "id": "a_helmsman", "name": "Helmsman", "tree": "admiral", "tier": 1, "description": "Enemy accuracy -10%.", "combat": { "evasion": 10 } },
+  { "id": "a_engineer", "name": "Damage Control", "tree": "admiral", "tier": 1, "description": "Ships take 15% less damage.", "combat": { "hp": 15 } },
+  { "id": "a_navigator", "name": "Navigator", "tree": "admiral", "tier": 1, "description": "+1 fleet speed.", "combat": { "speed": 1 } },
+  { "id": "a_veteran", "name": "Veteran", "tree": "admiral", "tier": 2, "requires": "a_gunner", "description": "+20% damage.", "combat": { "damage": 20 } },
+  { "id": "a_warden", "name": "Shield Warden", "tree": "admiral", "tier": 2, "requires": "a_engineer", "description": "+25% shields.", "combat": { "shields": 25 } },
+  { "id": "a_raider", "name": "Raider", "tree": "admiral", "tier": 2, "requires": "a_navigator", "description": "+2 speed and +10% damage.", "combat": { "speed": 2, "damage": 10 } },
+  { "id": "a_tactician", "name": "Tactician", "tree": "admiral", "tier": 2, "requires": "a_marksman", "description": "+15% accuracy and enemy accuracy -5%.", "combat": { "accuracy": 15, "evasion": 5 } }
+]

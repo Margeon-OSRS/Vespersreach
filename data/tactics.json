@@ -1,0 +1,7 @@
+[
+  { "id": "balanced", "name": "Balanced", "counters": [], "damage": {}, "description": "No special orders. Steady fire across every range." },
+  { "id": "barrage", "name": "Long-Range Barrage", "counters": ["assault"], "damage": { "missile": 30, "laser": 15, "kinetic": -20 }, "description": "Open with everything that reaches. Missiles and lasers hit harder; kinetics suffer. Strong against Close Assault." },
+  { "id": "assault", "name": "Close Assault", "counters": ["evasive"], "damage": { "kinetic": 30, "laser": 5 }, "accuracy": 10, "damageTaken": 10, "description": "Charge to point-blank range. Kinetics and accuracy improve, but the fleet takes more damage. Strong against Evasive Manoeuvres." },
+  { "id": "evasive", "name": "Evasive Manoeuvres", "counters": ["shieldwall"], "damage": { "kinetic": -15, "laser": -15, "missile": -15 }, "evasion": 20, "description": "Scatter and weave. Enemy accuracy drops sharply at the cost of your own firepower. Strong against Shield Wall." },
+  { "id": "shieldwall", "name": "Shield Wall", "counters": ["barrage"], "damage": { "kinetic": -10, "laser": -10, "missile": -10 }, "shields": 50, "description": "Divert power to deflectors. Shields absorb far more; damage output falls. Strong against Long-Range Barrage." }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "tidewrights",
+    "pop": 3,
+    "guards": 2,
+    "bonusText": "+10% food empire-wide",
+    "bonus": [
+      {
+        "resource": "food",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "ashen_choir",
+    "pop": 2,
+    "guards": 2,
+    "bonusText": "+10% industry empire-wide",
+    "bonus": [
+      {
+        "resource": "industry",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "glasswardens",
+    "pop": 2,
+    "guards": 1,
+    "bonusText": "+10% science empire-wide",
+    "bonus": [
+      {
+        "resource": "science",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "dunefolk",
+    "pop": 3,
+    "guards": 2,
+    "bonusText": "+10% Dust empire-wide",
+    "bonus": [
+      {
+        "resource": "dust",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "verdant_kin",
+    "pop": 3,
+    "guards": 1,
+    "bonusText": "+5 approval empire-wide",
+    "bonus": [
+      {
+        "approval": 5
+      }
+    ]
+  },
+  {
+    "id": "hollow_court",
+    "pop": 2,
+    "guards": 3,
+    "bonusText": "+1 influence per system",
+    "bonus": [
+      {
+        "resource": "influence",
+        "flat": 1
+      }
+    ]
+  }
+]

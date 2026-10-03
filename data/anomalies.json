@@ -1,0 +1,14 @@
+[
+  { "id": "crystal_forests", "name": "Crystal Forests", "weight": 8, "modifiers": { "science": 2 }, "description": "Silicate growths that hum at radio frequencies. Excellent for research." },
+  { "id": "geothermal_vents", "name": "Geothermal Vents", "weight": 8, "modifiers": { "industry": 2 }, "description": "Free heat and free power for anyone willing to build near them." },
+  { "id": "ancient_ruins", "name": "Ancient Ruins", "weight": 5, "modifiers": { "science": 2, "influence": 1 }, "description": "Someone lived here first. Their leavings are worth studying and worth boasting about." },
+  { "id": "fertile_delta", "name": "Fertile Delta", "weight": 8, "modifiers": { "food": 2 }, "description": "Rich alluvial soil fed by a continent-spanning river system." },
+  { "id": "dust_veins", "name": "Dust Veins", "weight": 7, "modifiers": { "dust": 2 }, "description": "Seams of raw Dust run close to the surface." },
+  { "id": "toxic_atmosphere", "name": "Toxic Atmosphere", "weight": 7, "modifiers": { "food": -1 }, "approval": -10, "description": "Breathing here is a slow way to die. Nobody is happy about it." },
+  { "id": "tectonic_instability", "name": "Tectonic Instability", "weight": 6, "modifiers": { "industry": -1 }, "approval": -5, "description": "Quakes level factories faster than they can be rebuilt." },
+  { "id": "ring_system", "name": "Ring System", "weight": 7, "modifiers": { "dust": 1, "science": 1 }, "description": "A spectacular ring of ice and rock that doubles as a mining ground." },
+  { "id": "hollow_core", "name": "Hollow Core", "weight": 4, "modifiers": { "industry": 1 }, "popBonus": 1, "description": "Vast natural caverns offer extra living space below ground." },
+  { "id": "bioluminescent_seas", "name": "Bioluminescent Seas", "weight": 6, "modifiers": { "food": 1 }, "approval": 5, "description": "The oceans glow at night. Tourists and fishermen both approve." },
+  { "id": "magnetic_storms", "name": "Magnetic Storms", "weight": 6, "modifiers": { "science": -1 }, "approval": -5, "description": "Instruments fail, lights flicker and tempers fray." },
+  { "id": "monolith", "name": "The Monolith", "weight": 3, "modifiers": { "influence": 2 }, "description": "A featureless black obelisk of unknown origin. Pilgrims arrive uninvited." }
+]

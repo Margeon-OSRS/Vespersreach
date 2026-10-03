@@ -1,0 +1,443 @@
+[
+  {
+    "id": "vael",
+    "name": "Vael Ascendancy",
+    "demonym": "Vael",
+    "shipPrefix": "VAS",
+    "startingDust": 120,
+    "blurb": "A biomechanical polity that regards worlds as fruit. The Vael descend on a planet, render its crust into industry and move on before the husk cools. Their senate is a chorus of appetites held in uneasy balance.",
+    "affinity": {
+      "id": "devourer",
+      "name": "Consumers",
+      "description": "Colonised planets slowly deplete, losing one max population every 15 turns, but every world the Vael hold produces far more industry and food while it lasts."
+    },
+    "traits": [
+      {
+        "name": "Rendered Crust",
+        "description": "+40% industry, +20% food on all systems."
+      },
+      {
+        "name": "Spawn Pools",
+        "description": "+25% population growth."
+      },
+      {
+        "name": "Ravenous",
+        "description": "Worlds deplete over time."
+      }
+    ],
+    "modifiers": {
+      "industry": 40,
+      "food": 20,
+      "growth": 25,
+      "depletionEvery": 15
+    },
+    "uniqueHull": "vael_maw",
+    "uniqueImprovement": "vael_rendering_vats",
+    "colours": {
+      "primary": "#c8402f",
+      "secondary": "#f0a05a"
+    },
+    "homePlanet": "jungle"
+  },
+  {
+    "id": "keth",
+    "name": "Keth Exodus",
+    "demonym": "Keth",
+    "shipPrefix": "KA",
+    "startingDust": 160,
+    "blurb": "The Keth lost their homeworld to a dying star and never trusted ground again. They live aboard arks the size of moons, settling a world only long enough to harvest what they need before uprooting the whole population and moving on.",
+    "affinity": {
+      "id": "nomad",
+      "name": "Wanderers",
+      "description": "Cannot build outpost ships. Instead the Keth build Arks that carry population and found full colonies instantly, and any Keth system can Uproot, loading its people back into an Ark."
+    },
+    "traits": [
+      {
+        "name": "Ark-Born",
+        "description": "Arks found colonies instantly; systems can be uprooted."
+      },
+      {
+        "name": "Long Memory",
+        "description": "+15% science, +10% influence."
+      },
+      {
+        "name": "Unrooted",
+        "description": "+10 approval everywhere; cannot build outposts."
+      }
+    ],
+    "modifiers": {
+      "science": 15,
+      "influence": 10,
+      "approval": 10,
+      "cannotOutpost": true,
+      "instantColony": true
+    },
+    "uniqueHull": "keth_ark",
+    "uniqueImprovement": "keth_memory_vault",
+    "colours": {
+      "primary": "#6b7fd7",
+      "secondary": "#cfd8ff"
+    },
+    "homePlanet": "terran"
+  },
+  {
+    "id": "solenne",
+    "name": "Solenne Concord",
+    "demonym": "Solenne",
+    "shipPrefix": "SCV",
+    "startingDust": 140,
+    "blurb": "An oceanic civilisation of slow, deliberate minds who settled their wars by treaty a thousand years before they reached orbit. The Concord cannot declare war, and finds the idea faintly absurd. It wins by being impossible to dislike.",
+    "affinity": {
+      "id": "serene",
+      "name": "Serene",
+      "description": "Cannot declare war. Generates far more influence and approval, at the cost of weaker industry."
+    },
+    "traits": [
+      {
+        "name": "Tidal Consensus",
+        "description": "+25% influence, +15 approval."
+      },
+      {
+        "name": "Unhurried",
+        "description": "-20% industry."
+      },
+      {
+        "name": "Pacifist",
+        "description": "Cannot declare war; may always offer peace."
+      }
+    ],
+    "modifiers": {
+      "influence": 25,
+      "approval": 15,
+      "industry": -20,
+      "pacifist": true
+    },
+    "uniqueHull": "solenne_lantern",
+    "uniqueImprovement": "solenne_tide_gardens",
+    "colours": {
+      "primary": "#e9d98a",
+      "secondary": "#fff6cf"
+    },
+    "homePlanet": "ocean"
+  },
+  {
+    "id": "mercator",
+    "name": "Mercator Syndicate",
+    "demonym": "Mercator",
+    "shipPrefix": "MSV",
+    "startingDust": 220,
+    "blurb": "Less a nation than a cartel with a flag. The Syndicate sells everything, including loyalty, and prices every treaty in Dust. Its fleets are freighters first and warships second, which has never stopped them winning.",
+    "affinity": {
+      "id": "broker",
+      "name": "Brokers",
+      "description": "Every unit of food, industry, science and influence produced also yields a fraction of Dust. Dust output is increased further, but research suffers."
+    },
+    "traits": [
+      {
+        "name": "Everything Is For Sale",
+        "description": "+0.15 Dust per unit of any other resource produced."
+      },
+      {
+        "name": "Counting Houses",
+        "description": "+20% Dust."
+      },
+      {
+        "name": "Short Horizons",
+        "description": "-10% science."
+      }
+    ],
+    "modifiers": {
+      "dust": 20,
+      "science": -10,
+      "dustPerOutput": 0.15
+    },
+    "uniqueHull": "mercator_caravel",
+    "uniqueImprovement": "mercator_bourse",
+    "colours": {
+      "primary": "#d99a2b",
+      "secondary": "#ffd37a"
+    },
+    "homePlanet": "terran"
+  },
+  {
+    "id": "ferron",
+    "name": "Ferron Covenant",
+    "demonym": "Ferron",
+    "shipPrefix": "FCS",
+    "startingDust": 100,
+    "blurb": "Dwellers of a dry, iron-rich world who worship the forge as the first cause. Every Ferron citizen is a shareholder in a foundry; every foundry is a temple. Their ships are ugly, over-armoured and extremely numerous.",
+    "affinity": {
+      "id": "forgeborn",
+      "name": "Forgeborn",
+      "description": "Ships cost far less and industry is greatly increased, but food is scarce and the populace is hard to please."
+    },
+    "traits": [
+      {
+        "name": "Temple Foundries",
+        "description": "+25% industry."
+      },
+      {
+        "name": "Mass Production",
+        "description": "-20% ship cost."
+      },
+      {
+        "name": "Dour",
+        "description": "-10% food, -5 approval."
+      }
+    ],
+    "modifiers": {
+      "industry": 25,
+      "shipCost": -20,
+      "food": -10,
+      "approval": -5
+    },
+    "uniqueHull": "ferron_bastion",
+    "uniqueImprovement": "ferron_great_foundry",
+    "colours": {
+      "primary": "#8d9aa8",
+      "secondary": "#d6dde4"
+    },
+    "homePlanet": "arid"
+  },
+  {
+    "id": "oneiri",
+    "name": "Oneiri Chorus",
+    "demonym": "Oneiri",
+    "shipPrefix": "OCS",
+    "startingDust": 110,
+    "blurb": "A linked consciousness that dreams in equations. The Chorus reproduces slowly and argues with itself constantly, but nothing in the galaxy learns faster. Other empires find its diplomats unsettlingly well informed.",
+    "affinity": {
+      "id": "dreamer",
+      "name": "Dreamers",
+      "description": "Research is greatly accelerated and every citizen contributes science, but population grows slowly."
+    },
+    "traits": [
+      {
+        "name": "Shared Mind",
+        "description": "+35% science."
+      },
+      {
+        "name": "Quiet Persuasion",
+        "description": "+10% influence."
+      },
+      {
+        "name": "Slow Bloom",
+        "description": "-20% population growth."
+      }
+    ],
+    "modifiers": {
+      "science": 35,
+      "influence": 10,
+      "growth": -20
+    },
+    "uniqueHull": "oneiri_choir",
+    "uniqueImprovement": "oneiri_resonance_spire",
+    "colours": {
+      "primary": "#8e5bd6",
+      "secondary": "#d9c2ff"
+    },
+    "homePlanet": "terran"
+  },
+  {
+    "id": "corsairs",
+    "name": "Corsair Compact",
+    "demonym": "Corsair",
+    "shipPrefix": "CV",
+    "startingDust": 0,
+    "playable": false,
+    "blurb": "Deserters, debtors and the merely unlucky, bound by a charter nobody has read. The Compact raids whoever is nearest and sells to whoever is next.",
+    "affinity": {
+      "id": "corsair",
+      "name": "Outlaws",
+      "description": "At war with everyone, forever. Raids undefended colonies for Dust."
+    },
+    "traits": [
+      {
+        "name": "Marked",
+        "description": "Bounties are paid for every Corsair hull destroyed."
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#9a3b3b",
+      "secondary": "#d98c8c"
+    },
+    "homePlanet": "barren"
+  },
+  {
+    "id": "tidewrights",
+    "name": "Tidewrights",
+    "demonym": "Tidewrights",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "Reef-dwelling shipwrights who grow their hulls from coral.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+10% food empire-wide"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#4fb3a8",
+      "secondary": "#4fb3a8"
+    },
+    "homePlanet": "ocean"
+  },
+  {
+    "id": "ashen_choir",
+    "name": "Ashen Choir",
+    "demonym": "Ashen Choir",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "Monastics who forge in the mouths of volcanoes and sing while they do it.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+10% industry empire-wide"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#c46b3a",
+      "secondary": "#c46b3a"
+    },
+    "homePlanet": "lava"
+  },
+  {
+    "id": "glasswardens",
+    "name": "Glasswardens",
+    "demonym": "Glasswardens",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "Archivists sealed under ice, trading knowledge for warmth.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+10% science empire-wide"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#9fd8ff",
+      "secondary": "#9fd8ff"
+    },
+    "homePlanet": "arctic"
+  },
+  {
+    "id": "dunefolk",
+    "name": "Dunefolk Compact",
+    "demonym": "Dunefolk Compact",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "Caravan clans whose salt roads predate the star lanes.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+10% Dust empire-wide"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#d9b06b",
+      "secondary": "#d9b06b"
+    },
+    "homePlanet": "desert"
+  },
+  {
+    "id": "verdant_kin",
+    "name": "Verdant Kin",
+    "demonym": "Verdant Kin",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "A forest polity that mistakes visitors for weather.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+5 approval empire-wide"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#6fcf63",
+      "secondary": "#6fcf63"
+    },
+    "homePlanet": "jungle"
+  },
+  {
+    "id": "hollow_court",
+    "name": "Hollow Court",
+    "demonym": "Hollow Court",
+    "shipPrefix": "MV",
+    "startingDust": 0,
+    "playable": false,
+    "minor": true,
+    "blurb": "Exiled nobility ruling a cratered rock with ferocious etiquette.",
+    "affinity": {
+      "id": "minor",
+      "name": "Minor faction",
+      "description": "A single-system polity. Win its goodwill with envoys and gifts to assimilate it, or take it by force."
+    },
+    "traits": [
+      {
+        "name": "Boon",
+        "description": "+1 influence per system"
+      }
+    ],
+    "modifiers": {},
+    "uniqueHull": "dagger",
+    "uniqueImprovement": "exchange_hub",
+    "colours": {
+      "primary": "#a89ccf",
+      "secondary": "#a89ccf"
+    },
+    "homePlanet": "barren"
+  }
+]

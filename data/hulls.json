@@ -1,0 +1,238 @@
+[
+  {
+    "id": "pathfinder",
+    "name": "Pathfinder",
+    "class": "explorer",
+    "cost": 40,
+    "hp": 40,
+    "speed": 6,
+    "commandPoints": 1,
+    "slots": {
+      "weapon": 0,
+      "defence": 1,
+      "support": 2
+    },
+    "roles": [
+      "explore"
+    ],
+    "description": "A fast, lightly built scout that reveals systems and star lanes.",
+    "troops": 0
+  },
+  {
+    "id": "settler",
+    "name": "Settler",
+    "class": "colony",
+    "cost": 90,
+    "hp": 60,
+    "speed": 4,
+    "commandPoints": 2,
+    "slots": {
+      "weapon": 0,
+      "defence": 1,
+      "support": 1
+    },
+    "roles": [
+      "outpost"
+    ],
+    "description": "Carries the prefabricated core of an outpost. Consumed on colonisation.",
+    "troops": 0
+  },
+  {
+    "id": "dagger",
+    "name": "Dagger",
+    "class": "corvette",
+    "cost": 60,
+    "hp": 80,
+    "speed": 5,
+    "commandPoints": 1,
+    "slots": {
+      "weapon": 2,
+      "defence": 1,
+      "support": 1
+    },
+    "requires": "warship_frames",
+    "description": "A cheap, fast gunboat. Dies easily; brings friends.",
+    "troops": 1
+  },
+  {
+    "id": "lance",
+    "name": "Lance",
+    "class": "frigate",
+    "cost": 110,
+    "hp": 160,
+    "speed": 4,
+    "commandPoints": 2,
+    "slots": {
+      "weapon": 3,
+      "defence": 2,
+      "support": 1
+    },
+    "requires": "warship_frames",
+    "description": "The workhorse escort of every navy.",
+    "troops": 2
+  },
+  {
+    "id": "warden",
+    "name": "Warden",
+    "class": "cruiser",
+    "cost": 220,
+    "hp": 320,
+    "speed": 4,
+    "commandPoints": 3,
+    "slots": {
+      "weapon": 4,
+      "defence": 3,
+      "support": 2
+    },
+    "requires": "capital_hulls",
+    "description": "A line ship with room for serious armament.",
+    "troops": 4
+  },
+  {
+    "id": "bulwark",
+    "name": "Bulwark",
+    "class": "battleship",
+    "cost": 420,
+    "hp": 640,
+    "speed": 3,
+    "commandPoints": 5,
+    "slots": {
+      "weapon": 6,
+      "defence": 5,
+      "support": 2
+    },
+    "requires": "dreadnought_hulls",
+    "description": "A fortress with engines.",
+    "troops": 6
+  },
+  {
+    "id": "hive",
+    "name": "Hive",
+    "class": "carrier",
+    "cost": 480,
+    "hp": 520,
+    "speed": 3,
+    "commandPoints": 5,
+    "slots": {
+      "weapon": 3,
+      "defence": 4,
+      "support": 4
+    },
+    "requires": "dreadnought_hulls",
+    "description": "Launches swarms of drones and carries repair bays for the fleet.",
+    "troops": 3
+  },
+  {
+    "id": "vael_maw",
+    "name": "Maw",
+    "class": "cruiser",
+    "cost": 200,
+    "hp": 340,
+    "speed": 4,
+    "commandPoints": 3,
+    "factionOnly": "vael",
+    "slots": {
+      "weapon": 5,
+      "defence": 2,
+      "support": 2
+    },
+    "requires": "capital_hulls",
+    "description": "A Vael harvester-warship whose forward bay can strip an asteroid or a hull.",
+    "troops": 4
+  },
+  {
+    "id": "keth_ark",
+    "name": "Ark",
+    "class": "colony",
+    "cost": 140,
+    "hp": 200,
+    "speed": 3,
+    "commandPoints": 3,
+    "factionOnly": "keth",
+    "slots": {
+      "weapon": 0,
+      "defence": 2,
+      "support": 2
+    },
+    "roles": [
+      "ark"
+    ],
+    "cargoPop": 3,
+    "description": "A moon-sized habitat carrying three units of population. Founds a full colony at once.",
+    "troops": 0
+  },
+  {
+    "id": "solenne_lantern",
+    "name": "Lantern",
+    "class": "explorer",
+    "cost": 50,
+    "hp": 50,
+    "speed": 8,
+    "commandPoints": 1,
+    "factionOnly": "solenne",
+    "slots": {
+      "weapon": 0,
+      "defence": 1,
+      "support": 3
+    },
+    "roles": [
+      "explore"
+    ],
+    "description": "A Concord envoy ship, faster than anything else in the early game.",
+    "troops": 0
+  },
+  {
+    "id": "mercator_caravel",
+    "name": "Caravel",
+    "class": "frigate",
+    "cost": 100,
+    "hp": 150,
+    "speed": 5,
+    "commandPoints": 2,
+    "factionOnly": "mercator",
+    "slots": {
+      "weapon": 2,
+      "defence": 2,
+      "support": 2
+    },
+    "requires": "warship_frames",
+    "description": "An armed freighter. Earns Dust on every trade route it escorts.",
+    "troops": 2
+  },
+  {
+    "id": "ferron_bastion",
+    "name": "Bastion",
+    "class": "battleship",
+    "cost": 360,
+    "hp": 760,
+    "speed": 3,
+    "commandPoints": 5,
+    "factionOnly": "ferron",
+    "slots": {
+      "weapon": 5,
+      "defence": 7,
+      "support": 1
+    },
+    "requires": "dreadnought_hulls",
+    "description": "Half the price of a Bulwark and twice as ugly, with armour to match.",
+    "troops": 6
+  },
+  {
+    "id": "oneiri_choir",
+    "name": "Choir",
+    "class": "carrier",
+    "cost": 440,
+    "hp": 480,
+    "speed": 4,
+    "commandPoints": 5,
+    "factionOnly": "oneiri",
+    "slots": {
+      "weapon": 2,
+      "defence": 3,
+      "support": 6
+    },
+    "requires": "dreadnought_hulls",
+    "description": "A mobile research cathedral that also happens to carry drones.",
+    "troops": 3
+  }
+]

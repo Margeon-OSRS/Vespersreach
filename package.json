@@ -1,0 +1,20 @@
+{
+  "name": "vesper-reach",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Vesper Reach: a single-player, turn-based 4X grand strategy game that runs entirely in the browser.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

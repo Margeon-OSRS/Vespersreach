@@ -1,0 +1,326 @@
+[
+  {
+    "id": "capital_seat",
+    "name": "Seat of Government",
+    "cost": 0,
+    "upkeep": 0,
+    "hidden": true,
+    "unique": true,
+    "description": "The administrative heart of the empire. Grants a solid base of every resource.",
+    "effects": [
+      {
+        "resource": "food",
+        "flat": 3
+      },
+      {
+        "resource": "industry",
+        "flat": 5
+      },
+      {
+        "resource": "dust",
+        "flat": 4
+      },
+      {
+        "resource": "science",
+        "flat": 3
+      },
+      {
+        "resource": "influence",
+        "flat": 3
+      },
+      {
+        "approval": 10
+      }
+    ]
+  },
+  {
+    "id": "hydroponic_terraces",
+    "name": "Hydroponic Terraces",
+    "cost": 60,
+    "upkeep": 1,
+    "description": "Stacked growing decks in orbit and on the surface.",
+    "effects": [
+      {
+        "resource": "food",
+        "flat": 3
+      },
+      {
+        "resource": "food",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "fabrication_yards",
+    "name": "Fabrication Yards",
+    "cost": 80,
+    "upkeep": 2,
+    "description": "Automated factories that turn ore into everything else.",
+    "effects": [
+      {
+        "resource": "industry",
+        "flat": 3
+      },
+      {
+        "resource": "industry",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "exchange_hub",
+    "name": "Exchange Hub",
+    "cost": 70,
+    "upkeep": 0,
+    "description": "A licensed market that taxes every transaction in the system.",
+    "effects": [
+      {
+        "resource": "dust",
+        "flat": 3
+      },
+      {
+        "resource": "dust",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "observatory",
+    "name": "Deep Sky Observatory",
+    "cost": 70,
+    "upkeep": 1,
+    "description": "Telescopes, laboratories and a great deal of coffee.",
+    "effects": [
+      {
+        "resource": "science",
+        "flat": 3
+      },
+      {
+        "resource": "science",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "civic_forum",
+    "name": "Civic Forum",
+    "cost": 90,
+    "upkeep": 2,
+    "description": "A place for citizens to argue in public. Keeps them happy and keeps them heard.",
+    "effects": [
+      {
+        "resource": "influence",
+        "flat": 2
+      },
+      {
+        "approval": 5
+      }
+    ]
+  },
+  {
+    "id": "orbital_dock",
+    "name": "Orbital Dock",
+    "cost": 120,
+    "upkeep": 2,
+    "description": "Slipways and dry docks in orbit. Ships built here cost less.",
+    "effects": [
+      {
+        "shipCost": 15
+      },
+      {
+        "resource": "industry",
+        "flat": 2
+      }
+    ]
+  },
+  {
+    "id": "colonial_charter",
+    "name": "Colonial Charter",
+    "cost": 150,
+    "upkeep": 3,
+    "unique": true,
+    "capitalOnly": true,
+    "description": "A standing bureau that funds settlers across the empire. Faster growth everywhere.",
+    "effects": [
+      {
+        "growth": 25
+      }
+    ]
+  },
+  {
+    "id": "pleasure_domes",
+    "name": "Pleasure Domes",
+    "cost": 110,
+    "upkeep": 3,
+    "requires": "civic_engineering",
+    "description": "Gardens, theatres and gravity pools under glass.",
+    "effects": [
+      {
+        "approval": 15
+      }
+    ]
+  },
+  {
+    "id": "deep_mines",
+    "name": "Deep Core Mines",
+    "cost": 140,
+    "upkeep": 2,
+    "requires": "deep_extraction",
+    "description": "Shafts that reach the mantle.",
+    "effects": [
+      {
+        "resource": "industry",
+        "perPop": 1
+      }
+    ]
+  },
+  {
+    "id": "research_campus",
+    "name": "Research Campus",
+    "cost": 160,
+    "upkeep": 3,
+    "requires": "applied_theory",
+    "description": "A city-sized university.",
+    "effects": [
+      {
+        "resource": "science",
+        "perPop": 1
+      }
+    ]
+  },
+  {
+    "id": "trade_port",
+    "name": "Free Trade Port",
+    "cost": 150,
+    "upkeep": 2,
+    "requires": "trade_networks",
+    "description": "Bonded warehouses and a reputation for asking no questions.",
+    "effects": [
+      {
+        "resource": "dust",
+        "perPop": 1
+      }
+    ]
+  },
+  {
+    "id": "vael_rendering_vats",
+    "name": "Rendering Vats",
+    "cost": 130,
+    "upkeep": 2,
+    "factionOnly": "vael",
+    "description": "Vael digestion plants that convert crust directly into industrial feedstock.",
+    "effects": [
+      {
+        "resource": "industry",
+        "perPop": 1
+      },
+      {
+        "resource": "food",
+        "flat": 2
+      }
+    ]
+  },
+  {
+    "id": "keth_memory_vault",
+    "name": "Memory Vault",
+    "cost": 120,
+    "upkeep": 1,
+    "factionOnly": "keth",
+    "description": "A sealed archive of every world the Keth have left behind.",
+    "effects": [
+      {
+        "resource": "science",
+        "flat": 4
+      },
+      {
+        "resource": "influence",
+        "flat": 2
+      }
+    ]
+  },
+  {
+    "id": "solenne_tide_gardens",
+    "name": "Tide Gardens",
+    "cost": 120,
+    "upkeep": 1,
+    "factionOnly": "solenne",
+    "description": "Terraced lagoons where the Concord farms, debates and meditates at once.",
+    "effects": [
+      {
+        "resource": "food",
+        "flat": 3
+      },
+      {
+        "approval": 10
+      }
+    ]
+  },
+  {
+    "id": "mercator_bourse",
+    "name": "Syndicate Bourse",
+    "cost": 130,
+    "upkeep": 2,
+    "factionOnly": "mercator",
+    "description": "A trading floor where even the air is leased.",
+    "effects": [
+      {
+        "resource": "dust",
+        "flat": 5
+      },
+      {
+        "resource": "dust",
+        "perPop": 0.5
+      }
+    ]
+  },
+  {
+    "id": "ferron_great_foundry",
+    "name": "Great Foundry",
+    "cost": 140,
+    "upkeep": 2,
+    "factionOnly": "ferron",
+    "description": "A foundry-cathedral whose furnaces never go cold.",
+    "effects": [
+      {
+        "resource": "industry",
+        "flat": 6
+      },
+      {
+        "resource": "industry",
+        "perPop": 0.5
+      }
+    ]
+  },
+  {
+    "id": "oneiri_resonance_spire",
+    "name": "Resonance Spire",
+    "cost": 140,
+    "upkeep": 2,
+    "factionOnly": "oneiri",
+    "description": "A tower that amplifies the Chorus until every citizen is a laboratory.",
+    "effects": [
+      {
+        "resource": "science",
+        "perPop": 1
+      }
+    ]
+  },
+  {
+    "id": "wonder_beacon",
+    "name": "The Vesper Beacon",
+    "cost": 1200,
+    "upkeep": 0,
+    "unique": true,
+    "requires": "grand_design",
+    "description": "A lighthouse for the whole galaxy. Completing it wins the game by Wonder.",
+    "effects": [
+      {
+        "resource": "influence",
+        "flat": 5
+      },
+      {
+        "approval": 5
+      }
+    ]
+  }
+]
