@@ -35,8 +35,8 @@ export interface EmpireReport {
 }
 
 export const OUTPOST_TURNS = 6;
-export const EXPANSION_FREE_SYSTEMS = 4;
-export const EXPANSION_PENALTY = 4;
+export const EXPANSION_FREE_SYSTEMS = 5;
+export const EXPANSION_PENALTY = 3;
 export const SIEGE_OUTPUT_MULT = 0.5;
 /** Percent output bonus for AI empires by difficulty. */
 export const AI_OUTPUT_BONUS: Record<Difficulty, number> = { easy: -15, normal: 0, hard: 25 };
@@ -58,7 +58,7 @@ export function approvalLabel(approval: number): string {
 }
 
 export function growthThreshold(pop: number): number {
-  return 12 + 6 * pop;
+  return 16 + 8 * pop;
 }
 
 export function shipUpkeepFor(cost: number): number {

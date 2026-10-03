@@ -2,6 +2,13 @@ import { index } from './data';
 import { ensureDefaultDesigns } from './designs';
 import type { Empire, GameData, Notification, TechDef } from './types';
 
+export const TECH_COST_GROWTH = 0.3;
+
+/** Each technology already known makes the next 30% dearer. */
+export function techCost(empire: Empire, tech: TechDef): number {
+  return Math.round(tech.cost * (1 + TECH_COST_GROWTH * empire.techs.length));
+}
+
 export function techResearched(empire: Empire, techId: string): boolean {
   return empire.techs.includes(techId);
 }
@@ -54,7 +61,7 @@ export function turnsToComplete(data: GameData, empire: Empire, sciencePerTurn: 
   const tech = empire.research.current ? index(data).tech[empire.research.current] : null;
   if (!tech) return null;
   if (sciencePerTurn <= 0) return Infinity;
-  return Math.max(1, Math.ceil((tech.cost - empire.research.progress) / sciencePerTurn));
+  return Math.max(1, Math.ceil((techCost(empire, tech) - empire.research.progress) / sciencePerTurn));
 }
 
 /** Applies one turn of science. Completed techs are reported through `notes`. */
@@ -71,8 +78,9 @@ export function processResearch(data: GameData, empire: Empire, science: number,
   while (r.current && guard++ < 10) {
     const tech = idx.tech[r.current];
     if (!tech) { r.current = r.queue.shift() ?? null; continue; }
-    if (r.progress < tech.cost) break;
-    r.progress -= tech.cost;
+    const cost = techCost(empire, tech);
+    if (r.progress < cost) break;
+    r.progress -= cost;
     grantTech(data, empire, tech.id);
     notes.push({ kind: 'research', text: `Research complete: ${tech.name}.` });
     r.current = r.queue.shift() ?? null;

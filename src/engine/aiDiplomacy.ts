@@ -24,7 +24,9 @@ export function runAiDiplomacy(state: GameState, data: GameData, empire: Empire,
       continue;
     }
     const strong = empireStrength(state, data, empire.id) > empireStrength(state, data, otherId) * 1.3;
-    if (!profile.peaceful && !pacifist && state.turn >= profile.aggressionTurn && att <= -30 && rel.status !== 'alliance' && strong && rng.chance(0.3)) {
+    const neighbours = ownedSystems(state, empire.id).some((s) => state.galaxy.lanes.some((l) => (l.a === s.id && state.galaxy.systems.find((x) => x.id === l.b)?.ownerId === otherId) || (l.b === s.id && state.galaxy.systems.find((x) => x.id === l.a)?.ownerId === otherId)));
+    const appetite = att - (neighbours ? profile.opportunism : 0);
+    if (!profile.peaceful && !pacifist && state.turn >= profile.aggressionTurn && appetite <= profile.warThreshold && rel.status !== 'alliance' && strong && rng.chance(0.3)) {
       if (!declareWar(state, data, empire.id, otherId) && other.isPlayer) note(otherId, { kind: 'diplomacy', text: `${empire.name} has declared war on you.` });
       continue;
     }

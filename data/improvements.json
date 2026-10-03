@@ -308,7 +308,7 @@
   {
     "id": "wonder_beacon",
     "name": "The Vesper Beacon",
-    "cost": 1200,
+    "cost": 2500,
     "upkeep": 0,
     "unique": true,
     "requires": "grand_design",

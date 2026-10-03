@@ -23,6 +23,7 @@ export function renderMenu(app: App): string {
   if (app.state) html += '<button data-action="export">Export JSON</button>';
   html += '<label><input type="file" id="import-file" accept="application/json" style="display:none"><button data-action="import">Import JSON</button></label>';
   html += '<button data-action="screen:newgame">New game</button>';
+  if (app.state) html += '<button data-action="tutorial-show">Show tutorial</button>';
   if (app.state) html += '<button class="primary" data-action="close-screen">Resume</button>';
   html += '</div></div><div style="flex:1"><h3>Keyboard</h3><div class="help-grid">' + SHORTCUTS.map(([k, v]) => `<div><kbd>${k}</kbd> ${v}</div>`).join('') + '</div>';
   html += '<h3 style="margin-top:14px">How to play</h3><p class="muted">Each system produces Food, Industry, Dust, Science and Influence from its settled planets. Food above population grows your people; Industry builds the queue; Dust pays upkeep and rush-buys; Science and Influence stockpile for later milestones. Send the Settler to a system with a habitable planet and found an outpost; it becomes a colony after six turns. Keep approval up or output falls.</p></div></div>';

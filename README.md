@@ -1,47 +1,57 @@
 # Vesper Reach
 
-A single-player, turn-based 4X grand strategy game in the spirit of the classic space 4X genre.
-It is a static web app: TypeScript, Vite, HTML5 Canvas for the galaxy map and plain DOM for the panels.
-No backend, no frameworks, no external art. Everything on screen is drawn procedurally.
+A single-player, turn-based 4X grand strategy game in the spirit of the classic space 4X genre, built as a static web app.
+TypeScript and Vite, an HTML5 Canvas galaxy map, plain DOM panels, no frameworks, no backend, no external art: every star, lane and planet is drawn procedurally.
 
-## Play
-
-Open the GitHub Pages deployment of this repository, or run it locally:
+Play it on GitHub Pages (this repository's deployment) or run it locally:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the printed URL. Saves live in your browser (`localStorage`) and can be exported or imported as JSON from the menu.
+## The game
+
+- **Six original factions**, each with an affinity that bends the rules: the world-consuming Vael, the nomadic Keth who settle with Arks and can uproot whole systems, the pacifist Solenne who cannot declare war, the Mercator who turn every resource into Dust, the industrial Ferron, and the slow-breeding, fast-thinking Oneiri. Each has a lore blurb, traits, a unique hull, a unique improvement and a three-step quest chain.
+- **Procedural galaxies** in four shapes and five sizes, joined by star lanes. Systems hold one to six planets of eleven types with sizes, anomalies and strategic or luxury deposits. Hostile planet types unlock through research.
+- **Five resources**: Food grows population, Industry builds the queue, Dust pays upkeep and rush-buys, Science drives research, Influence pays for laws and diplomacy. Approval scales everything.
+- **Research** across four quadrants and three eras; costs rise with every technology known.
+- **Ships and fleets**: seven hull classes with weapon, defence and support slots; a designer for your own blueprints; command-point limits; merge, split, tactic cards, repair.
+- **Combat** resolved in three range phases with kinetic, laser and missile weapons against shields, armour and flak, admiral bonuses, tactic counters and a readable battle report. Blockades halve a system's output; invasions land troops against ground defence.
+- **AI empires** at three difficulties that explore, settle, research, build, trade, declare war, besiege and invade.
+- **Diplomacy** with explained attitudes, peace, trade, research and alliance treaties, tribute demands, gifts, offers and war score.
+- **Pirates** who raid undefended colonies, **heroes** with levels and skill trees as governors or admirals, a **senate** with five parties, elections and laws, **galactic events**, and **minor factions** to court or conquer.
+- **Six victory conditions**: conquest, supremacy, wonder, science, economic, and score at the turn limit.
+- **Saves** in the browser with four slots and JSON export and import; a seed reproduces any galaxy exactly.
+
+## Controls
 
 | Key | Action |
 | --- | --- |
-| Enter | End turn |
+| Enter | End turn (asks twice if something looks unattended) |
 | E / R / D / P / H / S | Empire, Research, Designer, Diplomacy, Heroes, Senate |
 | Esc | Menu, or close the open screen |
 | Home | Centre on your capital |
 | F | Fit the whole galaxy on screen |
 | N | Cycle idle fleets |
+| Left-click | Select a star or fleet; drag to pan; wheel to zoom |
 | Right-click | Send the selected fleet to a system |
+
+A tutorial overlay guides the first turns of a new game; it can be hidden or replayed from the menu.
 
 ## Development
 
 ```bash
-npm test        # Vitest suite for the pure game engine
+npm test        # Vitest suite for the engine (determinism, economy, combat, AI, diplomacy, politics, balance)
 npm run build   # type-check and produce dist/
 npm run preview # serve dist/ locally
 ```
 
-Game data (factions, planet types, anomalies, improvements, hulls, modules, techs, laws, events) is JSON under `data/`.
-The engine in `src/engine` has no DOM access; the UI in `src/ui` renders it. See `docs/ARCHITECTURE.md` for the schemas and the milestone plan.
+- `data/` holds all content as JSON (factions, planets, anomalies, deposits, improvements, hulls, modules, techs, laws, events, tactics, heroes, hero skills, quests, minor factions), cross-validated on load.
+- `src/engine/` is the game: pure functions over a JSON-serialisable `GameState`, with no DOM access.
+- `src/ui/` renders it: the Canvas map and the DOM panels and screens.
+- `docs/ARCHITECTURE.md` documents the folder layout, data schemas and every rule by milestone.
 
 ## Deployment
 
-The workflow in `.github/workflows/deploy.yml` builds on every push to `main` and publishes `dist/` to GitHub Pages.
-Enable Pages in the repository settings with source "GitHub Actions". The build uses a relative base path, so it works at any Pages URL.
-
-## Status
-
-Milestones 1 to 4 are complete: galaxy generation, the map, systems and planets, colonisation, the five-resource economy, end turn, save/load, research, a ship designer, fleet command limits, three-phase combat with tactic cards and battle reports, sieges and invasions, AI empires at three difficulties, diplomacy with attitudes and treaties, pirates, heroes, a senate with elections and laws, galactic events, faction quest chains, minor factions, and six victory conditions.
-Balance, a tutorial overlay and polish follow in milestone 5.
+`.github/workflows/deploy.yml` runs the tests and the build on every push to `main` and publishes `dist/` to GitHub Pages. In the repository settings, set the Pages source to "GitHub Actions". The build uses a relative base path, so it works at any Pages URL.

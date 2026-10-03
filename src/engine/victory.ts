@@ -2,7 +2,7 @@ import { index } from './data';
 import { ownedSystems, systemPop } from './state';
 import type { Empire, GalaxySize, GameData, GameState, Victory, VictoryKind } from './types';
 
-export const ECONOMIC_TARGET: Record<GalaxySize, number> = { tiny: 3000, small: 4000, medium: 5000, large: 6500, huge: 8000 };
+export const ECONOMIC_TARGET: Record<GalaxySize, number> = { tiny: 6000, small: 8000, medium: 10000, large: 12000, huge: 15000 };
 export const WONDER_ID = 'wonder_beacon';
 
 export const VICTORY_TITLE: Record<VictoryKind, string> = {

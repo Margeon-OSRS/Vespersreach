@@ -94,8 +94,8 @@ BuildItem  { id, kind: improvement|ship, defId, cost, progress }
 
 - A settled planet yields `pop × yieldsPerPop`; outposts yield half. Anomalies add flat modifiers; luxury deposits add 2 Dust and 5 approval, strategic deposits add 1 Industry. Every owned system adds 1 Influence.
 - Improvements add `flat`, `perPop × system pop` and `percent`. Faction percent modifiers apply after that. Approval then multiplies everything: below 20 ×0.6, below 40 ×0.8, 40–59 ×1, 60–79 ×1.1, 80+ ×1.2.
-- Approval starts at 50, adds planet-type and anomaly values, improvement effects and faction modifiers, loses 4 per system beyond four, and 15 while the treasury is negative.
-- Food net = food − population. Positive net (scaled by growth bonuses) fills a growth stock; at `12 + 6 × pop` a new citizen is born on the colony with most room. A negative stock of the same size costs a citizen.
+- Approval starts at 50, adds planet-type and anomaly values, improvement effects and faction modifiers, loses 3 per system beyond five, 15 while the treasury is negative, and 10 for five turns after a pirate raid.
+- Food net = food − population. Positive net (scaled by growth bonuses) fills a growth stock; at `16 + 8 × pop` a new citizen is born on the colony with most room. A negative stock of the same size costs a citizen.
 - Industry feeds the head of the build queue; overflow carries to the next item; leftover with an empty queue becomes Dust at half value. Rush-buy costs twice the remaining industry in Dust.
 - Dust upkeep: improvement upkeep plus `max(1, hull cost / 40)` per ship. Science and Influence stockpile until milestones 2 and 4 spend them.
 - Outposts become colonies after 6 turns. Ships can only be built at a colony. The Keth build Arks that found colonies instantly and may uproot a whole system back into an Ark. The Vael lose one max population on every settled planet every 15 turns.
@@ -112,11 +112,11 @@ BuildItem  { id, kind: improvement|ship, defId, cost, progress }
 2. Research tree, improvements by tech, ship designer, fleets (merge/split, command points), movement, combat with tactic cards and reports, orbital siege, invasion. **Done.**
 3. AI empires, diplomacy (attitudes, treaties, demands, war score), pirates, heroes. **Done.**
 4. Politics and laws, events, quest chains, minor factions, victory conditions. **Done.**
-5. Balance pass, tutorial overlay, polish, tests, README.
+5. Balance pass, tutorial overlay, polish, tests, README. **Done.**
 
 ## Milestone 2 rules
 
-- **Research.** Science flows into the current tech; when none is selected it stockpiles and is spent the moment one is chosen. Completing a tech grants its unlocks (hulls, modules, improvements, planet tier) and refreshes stock ship designs.
+- **Research.** Science flows into the current tech; when none is selected it stockpiles and is spent the moment one is chosen. Every technology already known makes the next 30% dearer (`cost × (1 + 0.3 × techs known)`), so a full tree takes most of a 200-turn game. Completing a tech grants its unlocks (hulls, modules, improvements, planet tier) and refreshes stock ship designs.
 - **Designs.** A design is a hull plus modules that fit its weapon/defence/support slots. Stats: weapons (kind, damage, accuracy), shields (absorb laser damage each phase), armour (reduces kinetic and missile damage by `100/(100+armour)`), flak (chance to shoot down each incoming missile, capped 80%), speed, repair, troops. Cost = hull + modules; upkeep = `max(1, cost/40)` Dust.
 - **Fleets.** Command points per hull; a fleet may hold `6 + 2 × military techs` points. New ships join an idle fleet with room or start a new one. Fleets merge or split while parked. Ships repair 20% per turn at a friendly system plus repair modules anywhere.
 - **Combat.** Triggered after movement wherever warring empires share a system. Three simultaneous phases (long, medium, close); missiles are strongest at long range, kinetics at close range, lasers in the middle. Each side's tactic card modifies damage, accuracy, evasion or shields and gains +15% damage when it counters the enemy card. Destroyed ships leave the fleet; battle reports keep the last 30.
@@ -142,4 +142,11 @@ BuildItem  { id, kind: improvement|ship, defId, cost, progress }
 - **Events** start with a 7% chance per empire per turn (at most two active) and apply empire-wide effects for their duration.
 - **Quests** are a three-step chain per faction (explore, hold systems, research, build, field warships, win battles, bank Dust, reach population, recruit, pass a law). Each step pays Dust, influence or science on completion.
 - **Minor factions** hold one system each (one per twelve systems in the galaxy), guarded by a few corvettes. Envoys (15 influence, +20) and gifts (40 Dust, +15) raise goodwill, which fades one point every other turn; at 100 the faction can be assimilated: its system and people join the empire and its boon applies empire-wide. They can instead be conquered by siege and invasion, without the boon. AI empires also court minors they have found.
-- **Victory**, checked at the end of every turn, in priority order: conquest (every rival eliminated), supremacy (hold every founding capital), wonder (build the Vesper Beacon, unlocked by Grand Design), science (every technology), economic (Dust stock of 3000 to 8000 by galaxy size), and score when the turn limit is reached. Score = systems × 10 + population × 3 + techs × 5 + Dust / 50 + warships × 2 + heroes × 5 + laws × 5 + assimilated × 10 + battles won × 2. The game continues after a victory if you wish.
+- **Victory**, checked at the end of every turn, in priority order: conquest (every rival eliminated), supremacy (hold every founding capital), wonder (build the Vesper Beacon, unlocked by Grand Design), science (every technology), economic (Dust stock of 6000 to 15000 by galaxy size), and score when the turn limit is reached. Score = systems × 10 + population × 3 + techs × 5 + Dust / 50 + warships × 2 + heroes × 5 + laws × 5 + assimilated × 10 + battles won × 2. The game continues after a victory if you wish.
+
+## Milestone 5: balance and polish
+
+- Simulated 200-turn AI-only games on normal and hard drove the tuning: research scaling (above), the softer expansion penalty, slower early growth, AI war thresholds (`-20` attitude on normal, `-5` on hard, with an extra push against bordering empires) and AI approval defence (approval buildings below 55, approval laws below 50, no further expansion below 40, dismantling upkeep buildings when more than 100 Dust in debt).
+- `src/engine/__tests__/balance.test.ts` keeps those properties: no victory before turn 80 on normal, every AI solvent with approval of at least 30, and at least one war within 150 turns on hard.
+- A tutorial overlay walks a new player through selecting the capital, queuing a build, choosing research, moving the scout, founding an outpost and ending the turn; it auto-advances as each is done, can be hidden, and is replayable from the menu.
+- Ending the turn with no research, idle fleets, empty colony queues or unanswered offers asks for a second Enter. The top bar shows the current research with turns remaining and a badge for waiting offers.

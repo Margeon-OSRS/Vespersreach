@@ -1,6 +1,6 @@
 import { runAiDiplomacy, runAiHeroes } from './aiDiplomacy';
 import { bestColonyTarget, runAiFleets } from './aiFleets';
-import { availableDesigns, availableImprovements, canBuildShips, queueImprovement, queueShip } from './build';
+import { availableDesigns, availableImprovements, canBuildShips, queueImprovement, queueShip, rushBuy, rushCost } from './build';
 import { index } from './data';
 import { designStats } from './designs';
 import { empireReport, systemReport } from './economy';
@@ -12,11 +12,11 @@ import { ownedSystems } from './state';
 import type { Difficulty, Empire, GameData, GameState, Notification } from './types';
 import { atWar } from './war';
 
-export interface AiProfile { warships: number; aggressionTurn: number; peaceful: boolean }
+export interface AiProfile { warships: number; aggressionTurn: number; peaceful: boolean; warThreshold: number; opportunism: number }
 export const AI_PROFILE: Record<Difficulty, AiProfile> = {
-  easy: { warships: 0.6, aggressionTurn: 9999, peaceful: true },
-  normal: { warships: 1, aggressionTurn: 30, peaceful: false },
-  hard: { warships: 1.6, aggressionTurn: 15, peaceful: false },
+  easy: { warships: 0.6, aggressionTurn: 9999, peaceful: true, warThreshold: -999, opportunism: 0 },
+  normal: { warships: 1, aggressionTurn: 30, peaceful: false, warThreshold: -20, opportunism: 8 },
+  hard: { warships: 1.6, aggressionTurn: 15, peaceful: false, warThreshold: -5, opportunism: 15 },
 };
 
 const RESEARCH_PREF: Record<string, string[]> = {
@@ -66,18 +66,25 @@ function aiBuild(state: GameState, data: GameData, empire: Empire): void {
   let explorers = myShips.filter((s) => hullRoles(s.hullId).includes('explore')).length + queuedHulls.filter((h) => hullRoles(h).includes('explore')).length;
   let warships = myShips.filter((s) => (idx.hull[s.hullId]?.slots.weapon ?? 0) > 0).length + queuedHulls.filter((h) => (idx.hull[h]?.slots.weapon ?? 0) > 0).length;
   const anyWar = state.empires.some((e) => e.id !== empire.id && !e.isPirate && !e.eliminated && atWar(state, empire.id, e.id));
-  const wantedWar = Math.round((2 + state.turn / 15 + 2 * (systems.length - 1)) * profile.warships) + (anyWar ? 3 : 0);
+  const wantedWar = Math.min(30, Math.round((3 + state.turn / 25 + 1.2 * systems.length) * profile.warships) + (anyWar ? 4 : 0));
   const netDust = empireReport(state, data, empire).netDust;
   if (empire.dust < -50 && netDust < 0) {
     const fleet = state.fleets.filter((f) => f.ownerId === empire.id && f.systemId === empire.homeSystemId).sort((a, b) => a.ships.length - b.ships.length)[0];
     const victim = fleet?.ships.find((s) => (idx.hull[s.hullId]?.slots.weapon ?? 0) > 0);
     if (fleet && victim) { fleet.ships = fleet.ships.filter((s) => s.id !== victim.id); if (!fleet.ships.length) state.fleets = state.fleets.filter((f) => f.id !== fleet.id); }
     for (const s of systems) s.buildQueue = s.buildQueue.filter((b) => b.kind !== 'ship' || isSettler(empire.designs.find((d) => d.id === b.defId)?.hullId ?? ''));
+    if (empire.dust < -100) {
+      const poorest = [...systems].sort((a, b) => a.lastOutput.dust - b.lastOutput.dust)[0];
+      const costly = poorest?.improvements.filter((i) => (idx.improvement[i]?.upkeep ?? 0) > 0 && i !== 'capital_seat').sort((a, b) => (idx.improvement[b]?.upkeep ?? 0) - (idx.improvement[a]?.upkeep ?? 0))[0];
+      if (poorest && costly) poorest.improvements = poorest.improvements.filter((i) => i !== costly);
+    }
   }
-  const maxSystems = 4 + Math.floor(state.turn / 20);
+  const owned = ownedSystems(state, empire.id).length;
+  const maxSystems = empire.approval < 45 ? owned : 4 + Math.floor(state.turn / 30);
   const settlerDesign = designs.find((d) => isSettler(d.hullId));
   const explorerDesign = designs.find((d) => hullRoles(d.hullId).includes('explore'));
   const warDesign = designs.filter((d) => designStats(data, d).weapons.length > 0).sort((a, b) => designStats(data, b).cost - designStats(data, a).cost)[0];
+  if (empire.dust > 500 && systems[0].buildQueue[0] && rushCost(systems[0].buildQueue[0]) < empire.dust - 300) rushBuy(state, systems[0].id, systems[0].buildQueue[0].id);
   systems.forEach((s, i) => {
     if (s.buildQueue.length >= 2 || s.siege) return;
     const r = systemReport(state, data, s);
@@ -88,13 +95,13 @@ function aiBuild(state: GameState, data: GameData, empire: Empire): void {
     if (i === 0 && explorerDesign && explorers === 0 && state.turn < 80) {
       if (!queueShip(state, data, s.id, explorerDesign.id)) { explorers++; return; }
     }
-    if (warDesign && warships < wantedWar && i < 2 && empire.dust > 60 && (anyWar || netDust > 2)) {
+    if (warDesign && warships < wantedWar && i < 2 && empire.dust > 60 && (anyWar || netDust > 5)) {
       if (!queueShip(state, data, s.id, warDesign.id)) { warships++; return; }
     }
     const avail = availableImprovements(state, data, s).filter((d) => netDust > 0 || d.upkeep === 0);
     if (!avail.length || empire.dust < -20) return;
     let pick = r.foodNet < 1 ? avail.find((d) => d.effects.some((e) => e.resource === 'food')) : undefined;
-    if (!pick && r.approval < 45) pick = avail.find((d) => d.effects.some((e) => (e.approval ?? 0) > 0));
+    if (!pick && r.approval < 55) pick = avail.find((d) => d.effects.some((e) => (e.approval ?? 0) > 0));
     if (!pick) pick = IMPROVEMENT_ORDER.map((id) => avail.find((d) => d.id === id)).find((d): d is NonNullable<typeof d> => !!d) ?? [...avail].sort((a, b) => a.cost - b.cost)[0];
     if (pick) queueImprovement(state, data, s.id, pick.id);
   });
@@ -102,7 +109,9 @@ function aiBuild(state: GameState, data: GameData, empire: Empire): void {
 
 function aiPolitics(state: GameState, data: GameData, empire: Empire, rng: Rng): void {
   if (empire.senate.laws.length < MAX_LAWS && empire.influence > 80) {
-    const laws = availableLaws(data, empire).sort((a, b) => (a.ideology === empire.senate.ruling ? -1 : 0) - (b.ideology === empire.senate.ruling ? -1 : 0));
+    const wantApproval = empire.approval < 50;
+    const rank = (l: { ideology: string; effects: Array<{ approval?: number }> }) => (wantApproval && l.effects.some((e) => (e.approval ?? 0) > 0) ? -2 : 0) + (l.ideology === empire.senate.ruling ? -1 : 0);
+    const laws = availableLaws(data, empire).sort((a, b) => rank(a) - rank(b));
     if (laws.length) passLaw(data, empire, laws[0].id);
   }
   for (const minor of minorEmpires(state)) {

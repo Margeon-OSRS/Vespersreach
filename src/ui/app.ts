@@ -11,6 +11,7 @@ import { menuAction } from './menu';
 import { renderPanel } from './panels';
 import { renderScreen, screenAction } from './screens';
 import { saveToSlot } from './storage';
+import { renderTutorial, tutorialAction } from './tutorial';
 import { renderTopbar } from './topbar';
 
 export type Screen = 'none' | 'empire' | 'research' | 'designer' | 'diplomacy' | 'heroes' | 'senate' | 'menu' | 'newgame' | 'battle' | 'victory';
@@ -31,13 +32,16 @@ export class App {
   private victoryShown = false;
   designer: { hullId: string; name: string; modules: string[] } = { hullId: '', name: '', modules: [] };
   map: GalaxyMap;
-  private els: Record<'topbar' | 'panel' | 'notes' | 'overlay' | 'toast' | 'map', HTMLElement>;
+  private els: Record<'topbar' | 'panel' | 'notes' | 'overlay' | 'toast' | 'map' | 'tutorial', HTMLElement>;
+  tutorialDone = (() => { try { return localStorage.getItem('vesper-reach.tutorial') === 'done'; } catch { return false; } })();
+  tutorialStep = 0;
+  private endTurnArmed = false;
   private toastTimer = 0;
 
   constructor(root: HTMLElement) {
-    root.innerHTML = '<div id="topbar"></div><div id="main"><div id="map"></div><div id="panel"></div><div id="notes"></div><div id="overlay"></div><div id="toast"></div></div>';
+    root.innerHTML = '<div id="topbar"></div><div id="main"><div id="map"></div><div id="panel"></div><div id="notes"></div><div id="tutorial"></div><div id="overlay"></div><div id="toast"></div></div>';
     const q = (id: string) => root.querySelector<HTMLElement>('#' + id)!;
-    this.els = { topbar: q('topbar'), panel: q('panel'), notes: q('notes'), overlay: q('overlay'), toast: q('toast'), map: q('map') };
+    this.els = { topbar: q('topbar'), panel: q('panel'), notes: q('notes'), overlay: q('overlay'), toast: q('toast'), map: q('map'), tutorial: q('tutorial') };
     this.map = new GalaxyMap(this, this.els.map);
     bindActions(root, (action, el) => this.handleAction(action, el));
     window.addEventListener('keydown', (e) => this.onKey(e));
@@ -94,8 +98,29 @@ export class App {
     this.render();
   }
 
+  finishTutorial(): void {
+    this.tutorialDone = true;
+    try { localStorage.setItem('vesper-reach.tutorial', 'done'); } catch { /* ignore */ }
+  }
+
+  /** Things a player probably meant to do before ending the turn. */
+  reminders(): string[] {
+    const st = this.state!, p = this.player, out: string[] = [];
+    if (!p.research.current && p.techs.length < this.data.techs.length) out.push('no research selected');
+    const idle = st.fleets.filter((f) => f.ownerId === p.id && f.systemId && !f.path.length).length;
+    if (idle) out.push(`${idle} idle fleet${idle === 1 ? '' : 's'}`);
+    const empty = st.galaxy.systems.filter((s) => s.ownerId === p.id && !s.buildQueue.length && s.planets.some((pl) => pl.status === 'colony')).length;
+    if (empty) out.push(`${empty} empty build queue${empty === 1 ? '' : 's'}`);
+    const offers = st.offers.filter((o) => o.to === p.id).length;
+    if (offers) out.push(`${offers} diplomatic offer${offers === 1 ? '' : 's'} waiting`);
+    return out;
+  }
+
   endTurn(): void {
     if (!this.state || this.screen !== 'none') return;
+    const reminders = this.reminders();
+    if (reminders.length && !this.endTurnArmed) { this.endTurnArmed = true; this.toast(`Before ending the turn: ${reminders.join(', ')}. Press Enter again to continue.`); return; }
+    this.endTurnArmed = false;
     endTurn(this.state, this.data);
     if (this.selectedFleetId && !this.state.fleets.some((f) => f.id === this.selectedFleetId)) this.selectedFleetId = null;
     saveToSlot('autosave', this.state);
@@ -126,6 +151,8 @@ export class App {
     this.els.panel.innerHTML = this.screen === 'none' ? renderPanel(this) : '';
     this.els.notes.innerHTML = this.state ? this.state.notifications.map((n) => `<div class="note ${n.kind}" data-action="note" data-system="${n.systemId ?? ''}" data-fleet="${n.fleetId ?? ''}" data-battle="${n.battleId ?? ''}">${esc(n.text)}</div>`).join('') : '';
     this.els.overlay.innerHTML = renderScreen(this);
+    this.els.tutorial.innerHTML = this.screen === 'none' ? renderTutorial(this) : '';
+    this.endTurnArmed = false;
     this.els.map.classList.toggle('move', this.moveMode);
     this.map.requestDraw();
   }
@@ -139,7 +166,7 @@ export class App {
       else if (el.dataset.system) this.selectSystem(el.dataset.system, true);
       return;
     }
-    if (screenAction(this, action, el) || menuAction(this, action, el)) return;
+    if (tutorialAction(this, action) || screenAction(this, action, el) || menuAction(this, action, el)) return;
     if (this.state && buildPanelAction(this, action, el)) return;
   }
 
